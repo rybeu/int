@@ -1,0 +1,12 @@
+<%- include('../partials/header'); %>
+
+<h2>Opinie</h2>
+
+<% reviews.forEach(r => { %>
+  <div>
+    <p><%= r.review %></p>
+    <small><%= r.rating %></small>
+  </div>
+<% }) %>
+
+<%- include('../partials/footer'); %>

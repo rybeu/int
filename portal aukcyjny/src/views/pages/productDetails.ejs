@@ -1,0 +1,40 @@
+<%- include('../partials/header'); %>
+
+<h2><%= product.name %></h2>
+<p><%= product.description %></p>
+<p>Cena: <%= product.price %> zł</p>
+
+<% if (role === "klient") { %>
+  <a href="/cart/add/<%= product._id %>">Dodaj do koszyka</a>
+<% } %>
+
+<hr>
+
+<h3>Oceny</h3>
+👍 <%= likes %> | 👎 <%= dislikes %>
+
+<hr>
+
+<h3>Opinie</h3>
+
+<% if (reviews.length === 0) { %>
+  <p>Brak opinii</p>
+<% } %>
+
+<% reviews.forEach(r => { %>
+  <div style="border:1px solid #ccc; padding:10px; margin:10px 0;">
+    <p><%= r.review %></p>
+    <small>Ocena: <%= r.rating %></small>
+  </div>
+<% }) %>
+
+<% if (role === "klient") { %>
+  <hr>
+  <form method="POST" action="/products/<%= product._id %>/review">
+    <textarea name="review" required></textarea><br><br>
+    <button type="submit" name="rating" value="like">👍 Like</button>
+    <button type="submit" name="rating" value="dislike">👎 Dislike</button>
+  </form>
+<% } %>
+
+<%- include('../partials/footer'); %>

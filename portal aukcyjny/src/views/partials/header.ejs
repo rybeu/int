@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Portal aukcyjny jakby allegro ale gorszy</title>
+</head>
+<body>
+    <header>
+        <h3>Portal aukcyjny</h3>
+        <a href="/">Strona główna</a>
+
+        <% if (!role) { %>
+            <a href="/register">Zarejestruj się</a>
+            <a href="/login">Zaloguj się</a>
+        <% } else { %>
+            <a href="/logout">Wyloguj się</a>
+            <% if (role === "klient") { %>
+                <a href="/cart">Koszyk</a>
+            <% } else if (role === "sprzedawca") { %>
+                <a href="/add-product">Dodaj produkt</a>
+                <a href="/myProducts">Moje produkty</a>
+                <a href="/sellerOrders">Zamówienia</a>
+            <% } %>
+        <% } %>
+    </header>

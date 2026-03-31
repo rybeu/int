@@ -1,0 +1,27 @@
+<%- include('../partials/header'); %>
+
+<h2>Koszyk</h2>
+
+<% if (cart.length === 0) { %>
+  <p>Koszyk jest pusty</p>
+<% } else { %>
+  <ul>
+    <% cart.forEach(item => { %>
+      <li>
+        <strong><%= item.name %></strong><br>
+        Cena: <%= item.price %> zł<br>
+        Ilość: <%= item.quantity %><br>
+        Suma: <%= item.total %> zł<br>
+        <a href="/cart/remove/<%= item._id %>">Usuń</a>
+      </li>
+    <% }) %>
+  </ul>
+
+  <h3>Łączna kwota: <%= grandTotal %> zł</h3>
+
+  <form action="/cart/checkout" method="POST">
+    <button type="submit">Złóż zamówienie</button>
+  </form>
+<% } %>
+
+<%- include('../partials/footer'); %>

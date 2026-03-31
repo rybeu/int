@@ -1,0 +1,20 @@
+<%- include('../partials/header'); %>
+
+<h1>Produkty</h1>
+
+<ul>
+  <% products.forEach(product => { %>
+    <li>
+      <a href="/products/<%= product._id %>">
+        <%= product.name %>
+      </a>
+      - <%= product.price %> zł
+
+      <% if (role === "klient") { %>
+        <a href="/cart/add/<%= product._id %>">Dodaj do koszyka</a>
+      <% } %>
+    </li>
+  <% }) %>
+</ul>
+
+<%- include('../partials/footer'); %>

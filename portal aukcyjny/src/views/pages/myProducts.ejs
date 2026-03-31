@@ -1,0 +1,28 @@
+<%- include('../partials/header'); %>
+
+<h2>Moje produkty</h2>
+
+<% if (products.length === 0) { %>
+  <p>Brak ofert</p>
+<% } %>
+
+<% products.forEach(p => { %>
+  <div style="border:1px solid #ccc; padding:10px; margin:10px 0;">
+    <h3><%= p.name %></h3>
+    <p><%= p.description %></p>
+    <p>Cena: <%= p.price %> zł</p>
+
+    <form method="POST" action="/products/<%= p._id %>/edit">
+      <input name="name" value="<%= p.name %>">
+      <input name="description" value="<%= p.description %>">
+      <input name="price" value="<%= p.price %>">
+      <button type="submit">Edytuj</button>
+    </form>
+
+    <form method="POST" action="/products/<%= p._id %>/delete">
+      <button type="submit">Usuń</button>
+    </form>
+  </div>
+<% }) %>
+
+<%- include('../partials/footer'); %>

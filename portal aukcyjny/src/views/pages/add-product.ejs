@@ -1,0 +1,10 @@
+<%- include('../partials/header'); %>
+
+<form method="POST" action="/add-product">
+  <input type="text" name="name" placeholder="Nazwa" required>
+  <textarea name="description" placeholder="Opis" required></textarea>
+  <input type="number" name="price" placeholder="Cena" required>
+  <button type="submit">Dodaj produkt</button>
+</form>
+
+<%- include('../partials/footer'); %>

@@ -1,0 +1,20 @@
+<%- include('../partials/header'); %>
+
+<h2>Zamówienia sprzedawcy</h2>
+
+<% if (orders.length === 0) { %>
+  <p>Brak zamówień</p>
+<% } %>
+
+<% orders.forEach(order => { %>
+  <div style="border:1px solid #ccc; padding:10px; margin:10px 0;">
+    <p>Order ID: <%= order._id %></p>
+    <ul>
+      <% order.products.forEach(p => { %>
+        <li><%= p._id %> – Ilość: <%= p.quantity %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% }) %>
+
+<%- include('../partials/footer'); %>

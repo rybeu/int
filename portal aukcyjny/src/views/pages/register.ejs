@@ -1,0 +1,15 @@
+<%- include('../partials/header'); %>
+
+<form method="POST" action="/register">
+  <input type="text" name="username" placeholder="Login" required />
+  <input type="password" name="password" placeholder="Hasło" required />
+
+  <select name="role" required>
+    <option value="klient">Klient</option>
+    <option value="sprzedawca">Sprzedawca</option>
+  </select>
+
+  <button type="submit">Zarejestruj</button>
+</form>
+
+<%- include('../partials/footer'); %>
